@@ -1,32 +1,49 @@
 const express = require("express");
+const { handleError } = require("../../utils/handleErrors");
+const { getCards, getCard, createCard } = require("../service/cardService");
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  return res.send([{}]);
+router.get("/", async (req, res) => {
+  try {
+    const cards = await getCards();
+    return res.send(cards);
+  } catch (error) {
+    return handleError(res, error.status || 500, error.message);
+  }
 });
 
-router.post("/", (req, res) => {
-  return res.status(201).send(req.body);
+router.get("/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const card = await getCard(id);
+    return res.send(card);
+  } catch (error) {
+    return handleError(res, error.status || 500, error.message);
+  }
+});
+
+router.post("/", async (req, res) => {
+  try {
+    const card = await createCard(req.body);
+    res.status(201).send(card);
+  } catch (error) {
+    return handleError(res, error.status || 500, error.message);
+  }
+});
+
+router.put("/:id", (req, res) => {
+  const { id } = req.params;
+  return handleError(res, 201, `update card no: ${id}`);
+});
+
+router.patch("/:id", (req, res) => {
+  const { id } = req.params;
+  return handleError(res, 200, `card no: ${id} is liked!`);
+});
+
+router.delete("/:id", (req, res) => {
+  const { id } = req.params;
+  return handleError(res, 200, `card no: ${id} deleted!`);
 });
 
 module.exports = router;
-
-// app.get("/", (req, res) => {
-//     // try {
-//     //   throw new Error("no card found!!!!");
-//     // } catch (error) {
-//     //   return handleError(res, 404, error.message);
-//     // }
-//     const query = req.query;
-//     if (query.user) return res.send(query);
-//     return res.send("no query");
-//   });
-
-//   app.get("/:id", (req, res) => {
-//     res.send(req.params);
-//     return;
-//   });
-
-//   app.get("/body", (req, res) => {
-//     return res.send(req.body);
-//   });
