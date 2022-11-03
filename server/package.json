@@ -6,13 +6,13 @@
   "scripts": {
     "start": "node .",
     "test": "node test.js",
-    "dev": "nodemon .",
-    "install": "npm i && nodemon ."
+    "dev": "nodemon ."
   },
   "author": "David Yakin",
   "license": "ISC",
   "dependencies": {
     "chalk": "^4.1.1",
+    "cors": "^2.8.5",
     "express": "^4.18.2"
   },
   "devDependencies": {

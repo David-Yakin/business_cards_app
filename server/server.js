@@ -3,7 +3,9 @@ const express = require("express");
 const { handleError } = require("./utils/handleErrors");
 const app = express();
 const router = require("./router/router");
+const cors = require("./middlewares/cors");
 
+app.use(cors);
 app.use(express.json());
 app.use(express.static("./public"));
 
