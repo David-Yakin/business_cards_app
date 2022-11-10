@@ -1,3 +1,4 @@
+const { handleJoiError } = require("../../utils/handleErrors");
 const {
   find,
   findOne,
@@ -7,6 +8,7 @@ const {
   remove,
   findMyCards,
 } = require("../models/cardsAccessDataService");
+const validateCard = require("../validations/cardValidationService");
 
 const getCards = async () => {
   try {
@@ -36,6 +38,9 @@ const getCard = async cardId => {
 };
 
 const createCard = async rawCard => {
+  const { error } = validateCard(rawCard);
+  if (error) return handleJoiError(error);
+
   try {
     let card = { ...rawCard };
     card.createdAt = new Date();
