@@ -3,8 +3,9 @@ const { DEFAULT_VALIDATION } = require("../../helpers/mongooseValidators");
 
 const Address = new mongoose.Schema({
   state: {
-    ...DEFAULT_VALIDATION,
-    default: "not defined",
+    type: String,
+    maxLength: 256,
+    trim: true,
   },
   country: DEFAULT_VALIDATION,
   city: DEFAULT_VALIDATION,
