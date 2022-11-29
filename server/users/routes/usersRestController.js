@@ -1,5 +1,7 @@
 const express = require("express");
+const auth = require("../../auth/authService");
 const { handleError } = require("../../utils/handleErrors");
+const { generateUserPassword } = require("../helpers/bcrypt");
 const normalizeUser = require("../helpers/normalizeUser");
 const {
   registerUser,
@@ -26,6 +28,8 @@ router.post("/", async (req, res) => {
       return handleError(res, 400, `Joi Error: ${error.details[0].message}`);
 
     user = normalizeUser(user);
+    user.password = generateUserPassword(user.password);
+
     user = await registerUser(user);
     return res.status(201).send(user);
   } catch (error) {
@@ -40,15 +44,23 @@ router.post("/login", async (req, res) => {
     if (error)
       return handleError(res, 400, `Joi Error: ${error.details[0].message}`);
 
-    user = await loginUser(req.body);
-    return res.send(user);
+    const token = await loginUser(req.body);
+    return res.send(token);
   } catch (error) {
     return handleError(res, error.status || 500, error.message);
   }
 });
 
-router.get("/", async (req, res) => {
+router.get("/", auth, async (req, res) => {
   try {
+    const user = req.user;
+    if (!user.isAdmin)
+      return handleError(
+        res,
+        403,
+        "Authorization Error: You must be an admin user to see all users in the database"
+      );
+
     const users = await getUsers();
     return res.send(users);
   } catch (error) {
@@ -56,9 +68,18 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/:id", async (req, res) => {
+router.get("/:id", auth, async (req, res) => {
   try {
     const { id } = req.params;
+    const { _id, isAdmin } = req.user;
+
+    if (_id !== id && !isAdmin)
+      return handleError(
+        res,
+        403,
+        "Authorization Error: You must be an admin type user or the registered user to see this user details"
+      );
+
     const user = await getUser(id);
     return res.send(user);
   } catch (error) {

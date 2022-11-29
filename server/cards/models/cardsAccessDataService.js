@@ -16,7 +16,7 @@ const getCards = async () => {
   return Promise.resolve("get cards not in mongodb");
 };
 
-const getMyCards = async userId => {
+const getMyCards = async (userId) => {
   if (DB === "MONGODB") {
     try {
       const cards = await Card.find({ user_id: userId });
@@ -29,7 +29,7 @@ const getMyCards = async userId => {
   return Promise.resolve("get card not in mongodb");
 };
 
-const getCard = async cardId => {
+const getCard = async (cardId) => {
   if (DB === "MONGODB") {
     try {
       let card = await Card.findById(cardId);
@@ -43,7 +43,7 @@ const getCard = async cardId => {
   return Promise.resolve("get card not in mongodb");
 };
 
-const createCard = async normalizedCard => {
+const createCard = async (normalizedCard) => {
   if (DB === "MONGODB") {
     try {
       let card = new Card(normalizedCard);
@@ -83,14 +83,15 @@ const likeCard = async (cardId, userId) => {
       if (!card)
         throw new Error("A card with this ID cannot be found in the database");
 
-      const cardLikes = card.likes.find(id => id === userId);
+      const cardLikes = card.likes.find((id) => id === userId);
+
       if (!cardLikes) {
         card.likes.push(userId);
         card = await card.save();
         return Promise.resolve(card);
       }
 
-      const cardFiltered = card.likes.filter(id => id !== userId);
+      const cardFiltered = card.likes.filter((id) => id !== userId);
       card.likes = cardFiltered;
       card = await card.save();
       return Promise.resolve(card);

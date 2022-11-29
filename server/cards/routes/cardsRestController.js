@@ -51,6 +51,7 @@ router.post("/", async (req, res) => {
       return handleError(res, 400, `Joi Error: ${error.details[0].message}`);
 
     card = await normalizeCard(card, user._id);
+
     card = await createCard(card);
     return res.status(201).send(card);
   } catch (error) {
@@ -78,7 +79,7 @@ router.put("/:id", async (req, res) => {
 router.patch("/:id", async (req, res) => {
   try {
     const cardId = req.params.id;
-    const user = { _id: "6376667871c9c1d0b30481f7" };
+    const user = { _id: "6376667871c9c1d0b3048199" };
     const card = await likeCard(cardId, user._id);
     return res.send(card);
   } catch (error) {
