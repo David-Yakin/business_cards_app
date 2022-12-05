@@ -1,4 +1,5 @@
 const express = require("express");
+const auth = require("../../auth/authService");
 const { handleError } = require("../../utils/handleErrors");
 const normalizeCard = require("../helpers/normalizeCard");
 const {
@@ -42,10 +43,10 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", auth, async (req, res) => {
   try {
     let card = req.body;
-    const user = { _id: "6376667871c9c1d0b30481f7" };
+    const user = req.user;
     const { error } = validateCard(card);
     if (error)
       return handleError(res, 400, `Joi Error: ${error.details[0].message}`);
