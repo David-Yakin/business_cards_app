@@ -4,9 +4,9 @@
   "description": "Business cards app with MERN",
   "main": "server.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production&& node .",
+    "start": "export || cross-env NODE_ENV=production&& node .",
     "test": "node test.js",
-    "dev": "cross-env NODE_ENV=development&& nodemon ."
+    "dev": "export || cross-env NODE_ENV=development&& nodemon ."
   },
   "author": "David Yakin",
   "license": "ISC",
