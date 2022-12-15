@@ -20,4 +20,5 @@ const normalizeCard = async (rawCard, userId) => {
     user_id: rawCard.user_id || userId,
   };
 };
+
 module.exports = normalizeCard;
