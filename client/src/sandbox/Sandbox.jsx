@@ -1,8 +1,11 @@
-// import StringInterpolation from "./StringInterpolation";
 // import InlineStyle from "./styles/InlineStyle";
-// import CompLogic from "./CompLogic";
 
-import MuiSandbox from "./mui-sandbox/MuiSandbox";
+// import CompLogic from "./component-intro/CompLogic";
+// import StringInterpolation from "./component-intro/StringInterpolation";
+// import MuiSandbox from "./mui-sandbox/MuiSandbox";
+// import FatherPropsObject from "./props/props-object/FatherPropsObject";
+// import FatherPropsString from "./props/props-string/FatherPropsString";
+// import FatherPropsTwoKeys from "./props/props-two-keys/FatherPropsTwoKeys";
 
 const Sandbox = () => {
   return (
@@ -10,7 +13,10 @@ const Sandbox = () => {
       {/* <CompLogic /> */}
       {/* <StringInterpolation /> */}
       {/* <InlineStyle /> */}
-      <MuiSandbox />
+      {/* <MuiSandbox /> */}
+      {/* <FatherPropsString /> */}
+      {/* <FatherPropsObject /> */}
+      {/* <FatherPropsTwoKeys /> */}
     </div>
   );
 };
