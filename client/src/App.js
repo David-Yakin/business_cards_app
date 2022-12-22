@@ -1,16 +1,16 @@
 import "./App.css";
-import Card from "./cards/components/card/Card";
+import Cards from "./cards/components/Cards";
 // import PageHeader from "./components/PageHeader";
-// import Sandbox from "./sandbox/Sandbox";
+import Sandbox from "./sandbox/Sandbox";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       {/* <PageHeader /> */}
-      <Card />
-      {/* <Sandbox /> */}
+      {/* <Cards /> */}
+      <Sandbox />
     </div>
   );
-}
+};
 
 export default App;
