@@ -5,10 +5,10 @@
 // import FatherPropsObject from "./props/props-object/FatherPropsObject";
 // import FatherPropsString from "./props/props-string/FatherPropsString";
 // import FatherPropsTwoKeys from "./props/props-two-keys/FatherPropsTwoKeys";
-
-import Loops from "./Loops";
-import OnClick from "./events/OnClick";
-import RaisingEvents from "./events/RaisingEvents";
+// import Loops from "./Loops";
+import ConditionalRendering from "./ConditionalRendering";
+// import OnClick from "./events/OnClick";
+// import RaisingEvents from "./events/RaisingEvents";
 
 const Sandbox = () => {
   return (
@@ -21,8 +21,9 @@ const Sandbox = () => {
       {/* <FatherPropsObject /> */}
       {/* <FatherPropsTwoKeys /> */}
       {/* <Loops /> */}
+      <ConditionalRendering />
       {/* <OnClick /> */}
-      <RaisingEvents />
+      {/* <RaisingEvents /> */}
     </div>
   );
 };
