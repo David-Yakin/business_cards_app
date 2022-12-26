@@ -14,22 +14,17 @@ const CardBody = ({ card }) => {
       <Divider />
       <Box mt={1}>
         <Typography variant="body2" color="text.secondary">
-          <Typography variant="subtitle2" component="strong">
+          <Typography variant="subtitle1" component="strong">
             Phone:{" "}
           </Typography>
           {phone}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          <Typography variant="subtitle2" component="strong">
-            Address:{" "}
-          </Typography>
+          <strong>Address: </strong>
           {street} {houseNumber} {city}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          <Typography variant="subtitle2" component="strong">
-            Card Number:{" "}
-          </Typography>
-          {bizNumber}
+          <strong>Card Number: </strong> {bizNumber}
         </Typography>
       </Box>
     </CardContent>

@@ -6,17 +6,25 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import CallIcon from "@mui/icons-material/Call";
 
-const CardActionBar = () => {
+const CardActionBar = ({ cardId, handleDeleteCard, handleLikeCard }) => {
   return (
     <CardActions
       disableSpacing
       sx={{ paddingTop: 0, justifyContent: "space-between" }}
     >
       <Box>
-        <IconButton aria-label="add to favorites">
+        <IconButton
+          aria-label="delete card"
+          onClick={() => handleDeleteCard(cardId)}
+        >
           <DeleteIcon />
         </IconButton>
-        <IconButton aria-label="add to favorites">
+        <IconButton
+          aria-label="edit card"
+          onClick={() =>
+            console.log(`Move to Edit card component with card ${cardId}`)
+          }
+        >
           <ModeEditIcon />
         </IconButton>
       </Box>
@@ -25,7 +33,10 @@ const CardActionBar = () => {
         <IconButton aria-label="call business">
           <CallIcon />
         </IconButton>
-        <IconButton aria-label="add to favorites">
+        <IconButton
+          aria-label="add to favorites"
+          onClick={() => handleLikeCard(cardId)}
+        >
           <FavoriteIcon />
         </IconButton>
       </Box>
