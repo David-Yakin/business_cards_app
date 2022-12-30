@@ -1,14 +1,14 @@
 import "./App.css";
-import Cards from "./cards/components/Cards";
-// import PageHeader from "./components/PageHeader";
+import CardsPage from "./cards/pages/CardsPage";
+import AboutPage from "./pages/AboutPage";
 import Sandbox from "./sandbox/Sandbox";
 
 const App = () => {
   return (
     <div className="App">
-      {/* <PageHeader /> */}
-      {/* <Cards /> */}
-      <Sandbox />
+      <CardsPage />
+      {/* <AboutPage /> */}
+      {/* <Sandbox /> */}
     </div>
   );
 };
