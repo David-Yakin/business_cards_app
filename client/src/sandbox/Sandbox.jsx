@@ -1,7 +1,7 @@
+import MuiSandbox from "./mui-sandbox/MuiSandbox";
 // import StringInterpolation from "./StringInterpolation";
 // import InlineStyle from "./styles/InlineStyle";
 // import CompLogic from "./CompLogic";
-// import MuiSandbox from "./mui-sandbox/MuiSandbox";
 // import FatherPropsObject from "./props/props-object/FatherPropsObject";
 // import FatherPropsString from "./props/props-string/FatherPropsString";
 // import FatherPropsTwoKeys from "./props/props-two-keys/FatherPropsTwoKeys";
@@ -21,10 +21,13 @@
 // import UseStateWithFunction from "./hooks/use-state/UseStateWithFunction";
 // import UseStateWithObject from "./hooks/use-state/UseStateWithObject";
 
+import UseStateWithArrayOfObjects from "./hooks/use-state/UseStateWithArrayOfObjects";
+import SetPosts from "./hooks/use-state/SetPosts";
+
 const Sandbox = () => {
   return (
     <div>
-      {/* <MuiSandbox /> */}
+      <MuiSandbox />
       {/* <CompLogic /> */}
       {/* <StringInterpolation /> */}
       {/* <InlineStyle /> */}
@@ -46,6 +49,8 @@ const Sandbox = () => {
       {/* <UseStateWithFunction /> */}
       {/* <UseStateWithObject /> */}
       {/* <UseStateWithComplexObject /> */}
+      {/* <UseStateWithArrayOfObjects /> */}
+      {/* <SetPosts /> */}
     </div>
   );
 };

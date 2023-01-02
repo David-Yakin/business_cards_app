@@ -6,6 +6,8 @@ import React from "react";
 // import MuiContainer from "./layout/MuiContainer";
 // import MuiStack from "./layout/MuiStack";
 import MuiGrid from "./layout/MuiGrid";
+import MuiAppBar from "./navigations/MuiAppBar";
+import MuiBottomNavigation from "./navigations/MuiBottomNavigation";
 
 const MuiSandbox = () => {
   return (
@@ -16,7 +18,9 @@ const MuiSandbox = () => {
       {/* <MuiBox /> */}
       {/* <MuiContainer /> */}
       {/* <MuiStack /> */}
-      <MuiGrid />
+      {/* <MuiGrid /> */}
+      {/* <MuiAppBar /> */}
+      <MuiBottomNavigation />
     </div>
   );
 };
