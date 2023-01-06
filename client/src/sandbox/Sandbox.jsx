@@ -23,11 +23,22 @@ import MuiSandbox from "./mui-sandbox/MuiSandbox";
 
 import UseStateWithArrayOfObjects from "./hooks/use-state/UseStateWithArrayOfObjects";
 import SetPosts from "./hooks/use-state/SetPosts";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import NavItem from "../routes/NavItem";
+import { Outlet } from "react-router-dom";
 
 const Sandbox = () => {
   return (
     <div>
-      <MuiSandbox />
+      <AppBar position="sticky" color="transparent">
+        <Toolbar>
+          <NavItem to="logic" label="comp-logic" sx={{ color: "black" }} />
+        </Toolbar>
+      </AppBar>
+
+      {/* <MuiSandbox /> */}
       {/* <CompLogic /> */}
       {/* <StringInterpolation /> */}
       {/* <InlineStyle /> */}
@@ -51,6 +62,7 @@ const Sandbox = () => {
       {/* <UseStateWithComplexObject /> */}
       {/* <UseStateWithArrayOfObjects /> */}
       {/* <SetPosts /> */}
+      <Outlet />
     </div>
   );
 };

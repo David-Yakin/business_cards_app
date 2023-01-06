@@ -10,11 +10,11 @@ import NotLogged from "./NotLogged";
 import MenuBar from "./MenuBar";
 
 const RightNavBar = () => {
-  // const user = true
+  // const user = true;
   const user = false;
   let anchorEl = null;
 
-  const setAnchorEl = target => {
+  const setAnchorEl = (target) => {
     anchorEl = target;
     console.log("you opened menu");
   };
