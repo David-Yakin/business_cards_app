@@ -8,10 +8,20 @@ import React from "react";
 import MuiGrid from "./layout/MuiGrid";
 import MuiAppBar from "./navigations/MuiAppBar";
 import MuiBottomNavigation from "./navigations/MuiBottomNavigation";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import NavItem from "../../routes/NavItem";
+import { Outlet } from "react-router-dom";
 
 const MuiSandbox = () => {
   return (
     <div>
+      <AppBar position="sticky" color="transparent">
+        <Toolbar>
+          <NavItem label="Typography" to="typography" sx={{ color: "black" }} />
+          <NavItem label="Divider" to="divider" sx={{ color: "black" }} />
+        </Toolbar>
+      </AppBar>
       {/* <TypographyComponent /> */}
       {/* <MuiDivider /> */}
       {/* <MuiButton /> */}
@@ -20,7 +30,9 @@ const MuiSandbox = () => {
       {/* <MuiStack /> */}
       {/* <MuiGrid /> */}
       {/* <MuiAppBar /> */}
-      <MuiBottomNavigation />
+      {/* <MuiBottomNavigation />/ */}
+
+      <Outlet />
     </div>
   );
 };

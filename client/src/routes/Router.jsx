@@ -10,6 +10,20 @@ import LoginPage from "../users/pages/LoginPage";
 import SignupPage from "../users/pages/SignupPage";
 import CardDetailsPage from "../cards/pages/CardDetailsPage";
 import CompLogic from "../sandbox/CompLogic";
+import MuiSandbox from "../sandbox/mui-sandbox/MuiSandbox";
+import TypographyComponent from "./../sandbox/mui-sandbox/data-display/TypographyComponent";
+import MuiDivider from "./../sandbox/mui-sandbox/data-display/MuiDivider";
+import LifeCycleHooks from "../sandbox/life-cycle-hooks/LifeCycleHooks";
+import InitialCycle from "../sandbox/life-cycle-hooks/InitialCycle";
+import UseStateCycle from "../sandbox/life-cycle-hooks/UseStateCycle";
+import UseEffectAsComponentDidMount from "../sandbox/life-cycle-hooks/UseEffectAsComponentDidMount";
+import UseEffectAsComponentDidUpdate from "../sandbox/life-cycle-hooks/UseEffectAsComponentDidUpdate";
+import UseEffectAsComponentWillUnmount from "../sandbox/life-cycle-hooks/UseEffectAsComponentWillUnmount";
+import UseEffectNoDependancies from "../sandbox/life-cycle-hooks/UseEffectNoDependancies";
+import CustomCounterHook from "../sandbox/custom-hooks/CustomCounterHook";
+import CustomName from "../sandbox/custom-hooks/CustomName";
+import Memoization from "../sandbox/memoization/Memoization";
+import UseCallback from "../sandbox/memoization/use-callback/UseCallback";
 
 const Router = () => {
   return (
@@ -24,6 +38,35 @@ const Router = () => {
       <Route path={ROUTES.SIGNUP} element={<SignupPage />} />
       <Route path={ROUTES.SANDBOX} element={<Sandbox />}>
         <Route path="logic" element={<CompLogic />} />
+        <Route path="custom-counter-hook" element={<CustomCounterHook />} />
+        <Route path="custom-name-hook" element={<CustomName />} />
+        <Route path="memoization" element={<Memoization />}>
+          <Route path="use-callback" element={<UseCallback />} />
+        </Route>
+        <Route path="life-cycle" element={<LifeCycleHooks />}>
+          <Route path="initial" element={<InitialCycle />} />
+          <Route path="use-state-cycle" element={<UseStateCycle />} />
+          <Route
+            path="component-did-mount"
+            element={<UseEffectAsComponentDidMount />}
+          />
+          <Route
+            path="component-did-update"
+            element={<UseEffectAsComponentDidUpdate />}
+          />
+          <Route
+            path="component-will-unmount"
+            element={<UseEffectAsComponentWillUnmount />}
+          />
+          <Route
+            path="component-no-dependencies"
+            element={<UseEffectNoDependancies />}
+          />
+        </Route>
+        <Route path="mui-sandbox" element={<MuiSandbox />}>
+          <Route path="typography" element={<TypographyComponent />} />
+          <Route path="divider" element={<MuiDivider />} />
+        </Route>
       </Route>
       <Route path="*" element={<ErrorPage />} />
     </Routes>
