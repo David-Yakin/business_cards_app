@@ -24,6 +24,7 @@ import CustomCounterHook from "../sandbox/custom-hooks/CustomCounterHook";
 import CustomName from "../sandbox/custom-hooks/CustomName";
 import Memoization from "../sandbox/memoization/Memoization";
 import UseCallback from "../sandbox/memoization/use-callback/UseCallback";
+import UseMemo from "../sandbox/memoization/use-memo/UseMemo";
 
 const Router = () => {
   return (
@@ -40,9 +41,12 @@ const Router = () => {
         <Route path="logic" element={<CompLogic />} />
         <Route path="custom-counter-hook" element={<CustomCounterHook />} />
         <Route path="custom-name-hook" element={<CustomName />} />
+
         <Route path="memoization" element={<Memoization />}>
           <Route path="use-callback" element={<UseCallback />} />
+          <Route path="use-memo" element={<UseMemo />} />
         </Route>
+
         <Route path="life-cycle" element={<LifeCycleHooks />}>
           <Route path="initial" element={<InitialCycle />} />
           <Route path="use-state-cycle" element={<UseStateCycle />} />

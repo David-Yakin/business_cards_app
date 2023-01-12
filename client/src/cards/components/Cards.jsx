@@ -8,12 +8,12 @@ const Cards = ({ cards }) => {
   const handleDeleteCard = (cardId) => console.log(`Delete card: ${cardId}`);
   const handleLikeCard = (cardId) => console.log(`Like card: ${cardId}`);
 
-  if (!cards.length)
-    return (
-      <Typography>
-        Oops... it seems there are no business cards to display
-      </Typography>
-    );
+  // if (!cards.length)
+  //   return (
+  //     <Typography>
+  //       Oops... it seems there are no business cards to display
+  //     </Typography>
+  //   );
 
   return (
     <Grid container spacing={2} pb={2}>
