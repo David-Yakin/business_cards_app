@@ -56,6 +56,7 @@ const Sandbox = () => {
             to="memoization"
             sx={{ color: "black" }}
           />
+          <NavItem label="context" to="context" sx={{ color: "black" }} />
         </Toolbar>
       </AppBar>
 
