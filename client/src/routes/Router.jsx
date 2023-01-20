@@ -26,6 +26,7 @@ import Memoization from "../sandbox/memoization/Memoization";
 import UseCallback from "../sandbox/memoization/use-callback/UseCallback";
 import UseMemo from "../sandbox/memoization/use-memo/UseMemo";
 import A from "../sandbox/context/secondExe/components/A";
+import FormTest from "../sandbox/forms/FormTest";
 
 const Router = () => {
   return (
@@ -43,6 +44,7 @@ const Router = () => {
         <Route path="custom-counter-hook" element={<CustomCounterHook />} />
         <Route path="custom-name-hook" element={<CustomName />} />
         <Route path="context" element={<A />} />
+        <Route path="form" element={<FormTest />} />
 
         <Route path="memoization" element={<Memoization />}>
           <Route path="use-callback" element={<UseCallback />} />
