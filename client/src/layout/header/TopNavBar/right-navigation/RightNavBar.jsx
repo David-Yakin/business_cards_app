@@ -9,15 +9,16 @@ import Logged from "./Logged";
 import NotLogged from "./NotLogged";
 import MenuBar from "./MenuBar";
 import { useTheme } from "../../../../providers/ThemeProvider";
+import { useUser } from "../../../../users/providers/UserProvider";
 
 const RightNavBar = () => {
-  // const user = true;
-  const user = false;
+  const { user } = useUser();
+
   let anchorEl = null;
 
   const { isDark, toggleDarkMode } = useTheme();
 
-  const setAnchorEl = (target) => {
+  const setAnchorEl = target => {
     anchorEl = target;
     console.log("you opened menu");
   };
