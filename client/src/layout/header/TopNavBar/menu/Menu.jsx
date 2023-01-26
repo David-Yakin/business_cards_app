@@ -10,6 +10,11 @@ const Menu = ({ isOpen, anchorEl, onClose }) => {
   const { user } = useUser();
   const { handleLogout } = useUsers();
 
+  const onLogout = () => {
+    handleLogout();
+    onClose();
+  };
+
   return (
     <MuiMenu
       open={isOpen}
@@ -61,7 +66,7 @@ const Menu = ({ isOpen, anchorEl, onClose }) => {
               onClick={onClose}
             />
 
-            <MenuItem onClick={handleLogout}>Logout</MenuItem>
+            <MenuItem onClick={onLogout}>Logout</MenuItem>
           </>
         )}
       </Box>
