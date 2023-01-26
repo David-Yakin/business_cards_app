@@ -5,7 +5,7 @@ import { useUser } from "../providers/UserProvider";
 import useUsers from "../hooks/useUsers";
 import useForm from "../../forms/hooks/useForm";
 import initialLoginForm from "../helpers/initialForms/initialLoginForm";
-import loginSchema from "../models/joi-schema.js/loginSchema";
+import loginSchema from "../models/joi-schema/loginSchema";
 import Container from "@mui/material/Container";
 import Form from "../../forms/components/Form";
 import Input from "../../forms/components/Input";

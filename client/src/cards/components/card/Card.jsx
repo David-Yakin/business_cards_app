@@ -8,7 +8,8 @@ import cardType from "../../models/types/cardType";
 import { func } from "prop-types";
 import { useNavigate } from "react-router-dom";
 import ROUTES from "../../../routes/routesModel";
-const Card = ({ card, handleDeleteCard, handleLikeCard }) => {
+
+const Card = ({ card, onDelete, handleLikeCard }) => {
   const navigate = useNavigate();
 
   return (
@@ -21,8 +22,9 @@ const Card = ({ card, handleDeleteCard, handleLikeCard }) => {
       </CardActionArea>
       <CardActionBar
         cardId={card._id}
-        handleDeleteCard={handleDeleteCard}
+        onDelete={onDelete}
         handleLikeCard={handleLikeCard}
+        cardUserId={card.user_id}
       />
     </MuiCard>
   );
@@ -30,7 +32,7 @@ const Card = ({ card, handleDeleteCard, handleLikeCard }) => {
 
 Card.propTypes = {
   card: cardType.isRequired,
-  handleDeleteCard: func.isRequired,
+  onDelete: func.isRequired,
   handleLikeCard: func.isRequired,
 };
 

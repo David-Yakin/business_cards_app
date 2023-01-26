@@ -21,15 +21,19 @@ import MuiSandbox from "./mui-sandbox/MuiSandbox";
 // import UseStateWithFunction from "./hooks/use-state/UseStateWithFunction";
 // import UseStateWithObject from "./hooks/use-state/UseStateWithObject";
 
-import UseStateWithArrayOfObjects from "./hooks/use-state/UseStateWithArrayOfObjects";
-import SetPosts from "./hooks/use-state/SetPosts";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 import NavItem from "../routes/NavItem";
 import { Outlet } from "react-router-dom";
+import { useUser } from "../users/providers/UserProvider";
+import { Navigate } from "react-router-dom";
+import ROUTES from "../routes/routesModel";
 
 const Sandbox = () => {
+  const { user } = useUser();
+
+  if (!user || !user.isAdmin) return <Navigate replace to={ROUTES.CARDS} />;
+
   return (
     <div>
       <AppBar position="sticky" color="transparent">

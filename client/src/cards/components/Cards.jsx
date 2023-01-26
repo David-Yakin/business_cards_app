@@ -21,7 +21,7 @@ const Cards = ({ cards }) => {
         <Grid item xs={12} sm={6} md={4} lg={3} key={card._id}>
           <Card
             card={card}
-            handleDeleteCard={handleDeleteCard}
+            onDelete={handleDeleteCard}
             handleLikeCard={handleLikeCard}
           />
         </Grid>
