@@ -23,7 +23,7 @@ import MuiSandbox from "./mui-sandbox/MuiSandbox";
 
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import NavItem from "../routes/NavItem";
+import NavItem from "../routes/components/NavItem";
 import { Outlet } from "react-router-dom";
 import { useUser } from "../users/providers/UserProvider";
 import { Navigate } from "react-router-dom";

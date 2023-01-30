@@ -1,6 +1,6 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
-import NavBarLink from "../../../../routes/NavBarLink";
+import NavBarLink from "../../../../routes/components/NavBarLink";
 import ROUTES from "../../../../routes/routesModel";
 
 const Logo = () => {
@@ -12,8 +12,7 @@ const Logo = () => {
           display: { xs: "none", md: "inline-flex" },
           marginRight: 2,
           fontFamily: "fantasy",
-        }}
-      >
+        }}>
         BCard
       </Typography>
     </NavBarLink>

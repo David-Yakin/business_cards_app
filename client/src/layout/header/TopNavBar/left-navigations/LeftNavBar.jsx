@@ -2,7 +2,7 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Logo from "../Logo/Logo";
 import LogoIcon from "../Logo/LogoIcon";
-import NavItem from "../../../../routes/NavItem";
+import NavItem from "../../../../routes/components/NavItem";
 import ROUTES from "../../../../routes/routesModel";
 import { useUser } from "../../../../users/providers/UserProvider";
 

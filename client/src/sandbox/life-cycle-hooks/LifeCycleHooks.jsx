@@ -2,7 +2,7 @@ import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import { Outlet } from "react-router-dom";
-import NavItem from "../../routes/NavItem";
+import NavItem from "../../routes/components/NavItem";
 
 const LifeCycleHooks = () => {
   return (

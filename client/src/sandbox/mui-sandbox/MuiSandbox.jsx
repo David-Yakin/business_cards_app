@@ -10,7 +10,7 @@ import MuiAppBar from "./navigations/MuiAppBar";
 import MuiBottomNavigation from "./navigations/MuiBottomNavigation";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import NavItem from "../../routes/NavItem";
+import NavItem from "../../routes/components/NavItem";
 import { Outlet } from "react-router-dom";
 
 const MuiSandbox = () => {
