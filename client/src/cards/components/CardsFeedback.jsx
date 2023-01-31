@@ -1,13 +1,13 @@
 import React from "react";
-import { arrayOf, bool, string } from "prop-types";
+import { arrayOf, bool, string, func } from "prop-types";
 import Spinner from "../../components/Spinner";
 import Error from "../../components/Error";
 import { Typography } from "@mui/material";
 import Cards from "./Cards";
 import cardType from "../models/types/cardType";
 
-const CardsFeedback = ({ isPanding, error, cards }) => {
-  if (isPanding) return <Spinner />;
+const CardsFeedback = ({ isLoading, error, cards, onDelete }) => {
+  if (isLoading) return <Spinner />;
   if (error) return <Error errorMessage={error} />;
 
   if (cards && !cards.length)
@@ -17,13 +17,15 @@ const CardsFeedback = ({ isPanding, error, cards }) => {
       </Typography>
     );
 
-  if (cards && !!cards.length) return <Cards cards={cards} />;
+  if (cards && !!cards.length)
+    return <Cards cards={cards} onDelete={onDelete} />;
 };
 
 CardsFeedback.propTypes = {
-  isPanding: bool.isRequired,
+  isLoading: bool.isRequired,
   error: string,
   cards: arrayOf(cardType),
+  onDelete: func.isRequired,
 };
 
 export default CardsFeedback;

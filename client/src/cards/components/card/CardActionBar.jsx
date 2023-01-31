@@ -7,49 +7,73 @@ import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import CallIcon from "@mui/icons-material/Call";
 import { func, string } from "prop-types";
 import { useUser } from "../../../users/providers/UserProvider";
+import { useState } from "react";
+import CardDeleteDialog from "./CardDeleteDialog";
 
 const CardActionBar = ({ cardId, onDelete, handleLikeCard, cardUserId }) => {
+  const [isDialogOpen, setDialog] = useState(false);
   const { user } = useUser();
 
+  const handleDialog = (term) => {
+    if (term === "open") return setDialog(true);
+    setDialog(false);
+  };
+
+  const handleDeleteCard = () => {
+    handleDialog();
+    onDelete(cardId);
+  };
+
   return (
-    <CardActions
-      disableSpacing
-      sx={{ paddingTop: 0, justifyContent: "space-between" }}
-    >
-      <Box>
-        {user && (user.isAdmin || user._id === cardUserId) && (
-          <IconButton aria-label="delete card" onClick={() => onDelete(cardId)}>
-            <DeleteIcon />
-          </IconButton>
-        )}
+    <>
+      <CardActions
+        disableSpacing
+        sx={{ paddingTop: 0, justifyContent: "space-between" }}
+      >
+        <Box>
+          {user && (user.isAdmin || user._id === cardUserId) && (
+            <IconButton
+              aria-label="delete card"
+              onClick={() => handleDialog("open")}
+            >
+              <DeleteIcon />
+            </IconButton>
+          )}
 
-        {user && user._id === cardUserId && (
-          <IconButton
-            aria-label="edit card"
-            onClick={() =>
-              console.log(`Move to Edit card component with card ${cardId}`)
-            }
-          >
-            <ModeEditIcon />
-          </IconButton>
-        )}
-      </Box>
+          {user && user._id === cardUserId && (
+            <IconButton
+              aria-label="edit card"
+              onClick={() =>
+                console.log(`Move to Edit card component with card ${cardId}`)
+              }
+            >
+              <ModeEditIcon />
+            </IconButton>
+          )}
+        </Box>
 
-      <Box>
-        <IconButton aria-label="call business">
-          <CallIcon />
-        </IconButton>
-
-        {user && (
-          <IconButton
-            aria-label="add to favorites"
-            onClick={() => handleLikeCard(cardId)}
-          >
-            <FavoriteIcon />
+        <Box>
+          <IconButton aria-label="call business">
+            <CallIcon />
           </IconButton>
-        )}
-      </Box>
-    </CardActions>
+
+          {user && (
+            <IconButton
+              aria-label="add to favorites"
+              onClick={() => handleLikeCard(cardId)}
+            >
+              <FavoriteIcon />
+            </IconButton>
+          )}
+        </Box>
+      </CardActions>
+
+      <CardDeleteDialog
+        isDialogOpen={isDialogOpen}
+        onChangeDialog={handleDialog}
+        onDelete={handleDeleteCard}
+      />
+    </>
   );
 };
 

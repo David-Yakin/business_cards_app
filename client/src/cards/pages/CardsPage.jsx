@@ -5,11 +5,17 @@ import CardsFeedback from "../components/CardsFeedback";
 import useCards from "../hooks/useCards";
 
 const CardsPage = () => {
-  const { cards, error, isPending, handleGetCards } = useCards();
+  const { handleGetCards, value, handleDeleteCard } = useCards();
+  const { cards, error, isLoading } = value;
 
   useEffect(() => {
     handleGetCards();
   }, []);
+
+  const onDeleteCard = async (cardId) => {
+    await handleDeleteCard(cardId);
+    await handleGetCards();
+  };
 
   return (
     <Container>
@@ -18,7 +24,12 @@ const CardsPage = () => {
         subtitle="Here you can find business cards from all categories"
       />
 
-      <CardsFeedback isPanding={isPending} error={error} cards={cards} />
+      <CardsFeedback
+        isLoading={isLoading}
+        error={error}
+        cards={cards}
+        onDelete={onDeleteCard}
+      />
     </Container>
   );
 };

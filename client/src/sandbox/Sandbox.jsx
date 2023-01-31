@@ -62,6 +62,7 @@ const Sandbox = () => {
           />
           <NavItem label="form" to="form" sx={{ color: "black" }} />
           <NavItem label="context" to="context" sx={{ color: "black" }} />
+          <NavItem label="use ref" to="use-ref" sx={{ color: "black" }} />
         </Toolbar>
       </AppBar>
 
