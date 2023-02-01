@@ -29,6 +29,8 @@ import A from "../sandbox/context/secondExe/components/A";
 import FormTest from "../sandbox/forms/FormTest";
 import UseRefVsUseState from "../sandbox/hooks/useRef/UseRefVsUseState";
 import MyCardsPage from "../cards/pages/MyCardsPage";
+import UseRefSandbox from "../sandbox/hooks/useRef/UseRefSandbox";
+import UseRefCatchingEl from "../sandbox/hooks/useRef/UseRefCatchingEl";
 
 const Router = () => {
   return (
@@ -45,7 +47,10 @@ const Router = () => {
       <Route path={ROUTES.SIGNUP} element={<SignupPage />} />
       <Route path={ROUTES.SANDBOX} element={<Sandbox />}>
         <Route path="logic" element={<CompLogic />} />
-        <Route path="use-ref" element={<UseRefVsUseState />} />
+        <Route path="use-ref" element={<UseRefSandbox />} >
+          <Route path="catching-element" element={<UseRefCatchingEl/>}/>
+          <Route path="no-rendering" element={<UseRefVsUseState/>}/>
+        </Route>
         <Route path="custom-counter-hook" element={<CustomCounterHook />} />
         <Route path="custom-name-hook" element={<CustomName />} />
         <Route path="context" element={<A />} />
