@@ -20,6 +20,15 @@ export const getMyCards = async () => {
   }
 };
 
+export const createCard = async card => {
+  try {
+    const { data } = await axios.post(`${apiUrl}/cards/`, card);
+    return data;
+  } catch (error) {
+    return Promise.reject(error.message);
+  }
+};
+
 export const deleteCard = async (cardId) => {
   try {
     const { data } = await axios.delete(`${apiUrl}/cards/${cardId}`);

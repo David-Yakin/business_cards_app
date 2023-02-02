@@ -1,10 +1,11 @@
 import React from "react";
+import { colorLog } from "./utils";
 
 const InitialCycle = () => {
   return (
     <div>
-      {console.log("in render")}
-      InitialCycle
+      {colorLog("In render", "red")}
+      Look at the console!
     </div>
   );
 };

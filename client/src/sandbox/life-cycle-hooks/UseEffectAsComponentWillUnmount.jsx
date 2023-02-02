@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
-import { getTime } from "./utils";
+import { useEffect } from "react";
+import { colorLog } from "./utils";
 
 const UseEffectAsComponentWillUnmount = () => {
   useEffect(() => {
-    console.log(`in useEffect: ${getTime()}`);
-    return () => console.log(`in useEffect return: ${getTime()}`);
+    colorLog("In useEffect", "#2d65ff");
+    return () => colorLog("In useEffect return", "lightgreen");
   }, []);
 
-  return <div>{console.log(`in render: ${getTime()}`)}</div>;
+  return <div> {colorLog("In render", "red")}</div>;
 };
 
 export default UseEffectAsComponentWillUnmount;

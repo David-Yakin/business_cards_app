@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { getTime } from "./utils";
+
+import { colorLog } from "./utils";
 
 const UseStateCycle = () => {
   const [count, setCount] = useState(() => {
-    console.log(`in useState: ${getTime()}`);
+    colorLog("In useState", "yellow");
     setTimeout(() => {
-      setCount((prev) => prev + 1);
+      setCount(prev => prev + 1);
     }, 2000);
     return 0;
   });
@@ -13,7 +14,7 @@ const UseStateCycle = () => {
   return (
     <div>
       <div>Count: {count}</div>
-      {console.log(`in render: ${getTime()}`)}
+      {colorLog("In render", "red")}
     </div>
   );
 };

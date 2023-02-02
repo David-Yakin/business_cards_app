@@ -1,19 +1,23 @@
 import { useState, useEffect } from "react";
-import { getTime } from "./utils";
+import { colorLog } from "./utils";
 
 const UseEffectAsComponentDidMount = () => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    console.log(`in useEffect: ${getTime()}`);
-    setCount((prev) => prev + 1);
+    colorLog("In useEffect", "#2d65ff");
+    setCount(prev => prev + 1);
   }, []);
 
   return (
     <div>
-      {console.log(`in render: ${getTime()}`)}
+      {colorLog("In render", "red")}
       Counter: {count}
-      <button onClick={() => setCount((prev) => prev + 1)}>+</button>
+      <button
+        style={{ padding: 4, margin: 2 }}
+        onClick={() => setCount(prev => prev + 1)}>
+        +
+      </button>
     </div>
   );
 };
