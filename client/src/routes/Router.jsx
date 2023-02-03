@@ -32,6 +32,8 @@ import MyCardsPage from "../cards/pages/MyCardsPage";
 import UseRefSandbox from "../sandbox/hooks/useRef/UseRefSandbox";
 import UseRefCatchingEl from "../sandbox/hooks/useRef/UseRefCatchingEl";
 import CreateCardPage from "../cards/pages/CreateCardPage";
+import EditCardPage from "../cards/pages/EditCardPage";
+import FavCardsPage from "../cards/pages/FavCardPage";
 
 const Router = () => {
   return (
@@ -44,14 +46,16 @@ const Router = () => {
         path={`${ROUTES.CARD_DETAILS}/:cardId`}
         element={<CardDetailsPage />}
       />
+      <Route path={`${ROUTES.EDIT_CARD}/:cardId`} element={<EditCardPage />} />
       <Route path={ROUTES.MY_CARDS} element={<MyCardsPage />} />
+      <Route path={ROUTES.FAV_CARDS} element={<FavCardsPage />} />
       <Route path={ROUTES.LOGIN} element={<LoginPage />} />
       <Route path={ROUTES.SIGNUP} element={<SignupPage />} />
       <Route path={ROUTES.SANDBOX} element={<Sandbox />}>
         <Route path="logic" element={<CompLogic />} />
-        <Route path="use-ref" element={<UseRefSandbox />} >
-          <Route path="catching-element" element={<UseRefCatchingEl/>}/>
-          <Route path="no-rendering" element={<UseRefVsUseState/>}/>
+        <Route path="use-ref" element={<UseRefSandbox />}>
+          <Route path="catching-element" element={<UseRefCatchingEl />} />
+          <Route path="no-rendering" element={<UseRefVsUseState />} />
         </Route>
         <Route path="custom-counter-hook" element={<CustomCounterHook />} />
         <Route path="custom-name-hook" element={<CustomName />} />

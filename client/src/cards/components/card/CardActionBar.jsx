@@ -5,14 +5,28 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import CallIcon from "@mui/icons-material/Call";
-import { func, string } from "prop-types";
+import { func, string, arrayOf } from "prop-types";
 import { useUser } from "../../../users/providers/UserProvider";
 import { useState } from "react";
 import CardDeleteDialog from "./CardDeleteDialog";
+import { useNavigate } from "react-router-dom";
+import ROUTES from "../../../routes/routesModel";
+import useCards from "../../hooks/useCards";
 
-const CardActionBar = ({ cardId, onDelete, handleLikeCard, cardUserId }) => {
+const CardActionBar = ({ cardId, onDelete, onLike, cardUserId, cardLikes }) => {
   const [isDialogOpen, setDialog] = useState(false);
   const { user } = useUser();
+  const navigate = useNavigate();
+  const { handleLikeCard } = useCards();
+  const [isLike, setLike] = useState(
+    () => !!cardLikes.find((id) => id === user._id)
+  );
+
+  const handleLike = async () => {
+    setLike((prev) => !prev);
+    await handleLikeCard(cardId);
+    onLike();
+  };
 
   const handleDialog = (term) => {
     if (term === "open") return setDialog(true);
@@ -43,9 +57,7 @@ const CardActionBar = ({ cardId, onDelete, handleLikeCard, cardUserId }) => {
           {user && user._id === cardUserId && (
             <IconButton
               aria-label="edit card"
-              onClick={() =>
-                console.log(`Move to Edit card component with card ${cardId}`)
-              }
+              onClick={() => navigate(`${ROUTES.EDIT_CARD}/${cardId}`)}
             >
               <ModeEditIcon />
             </IconButton>
@@ -58,11 +70,8 @@ const CardActionBar = ({ cardId, onDelete, handleLikeCard, cardUserId }) => {
           </IconButton>
 
           {user && (
-            <IconButton
-              aria-label="add to favorites"
-              onClick={() => handleLikeCard(cardId)}
-            >
-              <FavoriteIcon />
+            <IconButton aria-label="add to favorites" onClick={handleLike}>
+              <FavoriteIcon color={isLike ? "error" : "inherit"} />
             </IconButton>
           )}
         </Box>
@@ -80,8 +89,9 @@ const CardActionBar = ({ cardId, onDelete, handleLikeCard, cardUserId }) => {
 CardActionBar.propTypes = {
   cardId: string.isRequired,
   onDelete: func.isRequired,
-  handleLikeCard: func.isRequired,
+  onLike: func.isRequired,
   cardUserId: string.isRequired,
+  cardLikes: arrayOf(string).isRequired,
 };
 
 export default CardActionBar;

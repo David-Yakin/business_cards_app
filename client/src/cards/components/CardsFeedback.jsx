@@ -6,7 +6,7 @@ import { Typography } from "@mui/material";
 import Cards from "./Cards";
 import cardType from "../models/types/cardType";
 
-const CardsFeedback = ({ isLoading, error, cards, onDelete }) => {
+const CardsFeedback = ({ isLoading, error, cards, onDelete, onLike }) => {
   if (isLoading) return <Spinner />;
   if (error) return <Error errorMessage={error} />;
 
@@ -18,7 +18,7 @@ const CardsFeedback = ({ isLoading, error, cards, onDelete }) => {
     );
 
   if (cards && !!cards.length)
-    return <Cards cards={cards} onDelete={onDelete} />;
+    return <Cards cards={cards} onDelete={onDelete} onLike={onLike} />;
 };
 
 CardsFeedback.propTypes = {
@@ -26,6 +26,11 @@ CardsFeedback.propTypes = {
   error: string,
   cards: arrayOf(cardType),
   onDelete: func.isRequired,
+  onLike: func.isRequired,
+};
+
+CardsFeedback.defaultProps = {
+  onLike: () => {},
 };
 
 export default CardsFeedback;
