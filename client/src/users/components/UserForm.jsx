@@ -1,45 +1,51 @@
 import React from "react";
 import { func, object, string } from "prop-types";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Grid from "@mui/material/Grid";
 import Form from "../../forms/components/Form";
 import Input from "../../forms/components/Input";
+import ROUTES from "../../routes/routesModel";
 
-const CardForm = ({
+const UserForm = ({
   onSubmit,
   onReset,
-  errors,
   onFormChange,
-  onInputChange,
-  data,
   title,
+  errors,
+  data,
+  onInputChange,
+  setData,
 }) => {
   return (
     <Form
       onSubmit={onSubmit}
       onReset={onReset}
-      errors={errors}
       onChange={onFormChange}
       styles={{ maxWidth: "800px" }}
-      title={title}>
+      title={title}
+      to={ROUTES.CARDS}>
       <Input
-        name="title"
-        label="title"
-        error={errors.title}
+        name="first"
+        label="first name"
+        error={errors.first}
         onChange={onInputChange}
         data={data}
         sm={6}
       />
       <Input
-        name="subtitle"
-        label="subtitle"
-        error={errors.subtitle}
+        name="middle"
+        label="middle name"
+        error={errors.middle}
         onChange={onInputChange}
         data={data}
         sm={6}
+        required={false}
       />
       <Input
-        name="description"
-        label="description"
-        error={errors.description}
+        name="last"
+        label="last name"
+        error={errors.last}
         onChange={onInputChange}
         data={data}
         sm={6}
@@ -63,27 +69,27 @@ const CardForm = ({
         sm={6}
       />
       <Input
-        name="webUrl"
-        label="web"
-        error={errors.webUrl}
+        name="password"
+        label="password"
+        type="password"
+        error={errors.password}
         onChange={onInputChange}
         data={data}
         sm={6}
-        required={false}
       />
       <Input
-        name="imageUrl"
+        name="url"
         label="image url"
-        error={errors.imageUrl}
+        error={errors.url}
         onChange={onInputChange}
         data={data}
         sm={6}
         required={false}
       />
       <Input
-        name="imageAlt"
+        name="alt"
         label="image alt"
-        error={errors.imageAlt}
+        error={errors.alt}
         onChange={onInputChange}
         data={data}
         sm={6}
@@ -99,8 +105,8 @@ const CardForm = ({
         required={false}
       />
       <Input
-        name="country"
         label="country"
+        name="country"
         error={errors.country}
         onChange={onInputChange}
         data={data}
@@ -124,7 +130,7 @@ const CardForm = ({
       />
       <Input
         name="houseNumber"
-        label="houseNumber"
+        label="house Number"
         type="number"
         error={errors.houseNumber}
         onChange={onInputChange}
@@ -134,25 +140,35 @@ const CardForm = ({
       <Input
         name="zip"
         label="zip"
-        type="number"
         error={errors.zip}
         onChange={onInputChange}
         data={data}
         sm={6}
         required={false}
       />
+      <Grid item>
+        <FormControlLabel
+          onChange={e => {
+            setData({ ...data, isBusiness: !!e.target.checked });
+          }}
+          name="isBusiness"
+          control={<Checkbox value={data.isBusiness} color="primary" />}
+          label="Signup as business"
+        />
+      </Grid>
     </Form>
   );
 };
 
-CardForm.propTypes = {
+UserForm.propTypes = {
   onSubmit: func.isRequired,
   onReset: func.isRequired,
-  errors: object.isRequired,
   onFormChange: func.isRequired,
-  onInputChange: func.isRequired,
-  data: object.isRequired,
   title: string.isRequired,
+  errors: object.isRequired,
+  data: object.isRequired,
+  onInputChange: func.isRequired,
+  setData: func.isRequired,
 };
 
-export default React.memo(CardForm);
+export default React.memo(UserForm);
