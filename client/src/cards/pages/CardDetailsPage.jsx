@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 const CardDetailsPage = () => {
   const { cardId } = useParams();
 
-  console.table({ idFromParams: cardId });
+  // console.table({ idFromParams: cardId });
 
   return (
     <Container>
@@ -14,6 +14,7 @@ const CardDetailsPage = () => {
         title="Business Card Details"
         subtitle="Here you can find more details about the business"
       />
+      <p>Details of business: {cardId}</p>
     </Container>
   );
 };
