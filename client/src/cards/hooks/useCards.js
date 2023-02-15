@@ -44,7 +44,7 @@ const useCards = () => {
     }
   }, []);
 
-  const handleGetCard = useCallback(async (cardId) => {
+  const handleGetCard = useCallback(async cardId => {
     try {
       setLoading(true);
       const card = await getCard(cardId);
@@ -70,15 +70,15 @@ const useCards = () => {
       setLoading(true);
       const cards = await getCards();
       const favCards = cards.filter(
-        (card) => !!card.likes.find((id) => id === user._id)
+        card => !!card.likes.find(id => id === user._id)
       );
       requestStatus(false, null, favCards);
     } catch (error) {
       requestStatus(false, error, null);
     }
-  });
+  }, []);
 
-  const handleCreateCard = useCallback(async (cardFromClient) => {
+  const handleCreateCard = useCallback(async cardFromClient => {
     try {
       setLoading(true);
       const normalizedCard = normalizeCard(cardFromClient);
@@ -103,7 +103,7 @@ const useCards = () => {
     }
   }, []);
 
-  const handleDeleteCard = useCallback(async (cardId) => {
+  const handleDeleteCard = useCallback(async cardId => {
     try {
       setLoading(true);
       await deleteCard(cardId);
@@ -113,7 +113,7 @@ const useCards = () => {
     }
   }, []);
 
-  const handleLikeCard = useCallback(async (cardId) => {
+  const handleLikeCard = useCallback(async cardId => {
     try {
       const card = await changeLikeStatus(cardId);
       requestStatus(false, null, cards, card);
